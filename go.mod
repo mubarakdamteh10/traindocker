@@ -1,10 +1,9 @@
-module traindocker
+module github.com/mubarakdamteh10/traindocker
 
 go 1.19
 
 require (
 	github.com/labstack/echo/v4 v4.9.0
-	github.com/mubarakdamteh10/traindocker v0.0.0-20221006063201-93e50fbf35d8
 	go.mongodb.org/mongo-driver v1.10.3
 )
 

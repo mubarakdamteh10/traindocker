@@ -16,8 +16,7 @@ import (
 
 func main() {
 	// create method
-	mongoURI := "mongodb+srv://mubarakdamteh10:Mubarak12345@cluster0.yainj.mongodb.net/?retryWrites=true&w=majority"
-	clientOptions := options.Client().ApplyURI(mongoURI)
+	clientOptions := options.Client().ApplyURI("mongodb+srv://mubarakdamteh10:Mubarak12345@cluster0.yainj.mongodb.net/?retryWrites=true&w=majority&ssl=true")
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
 		log.Fatal(err)
@@ -40,6 +39,7 @@ func main() {
 	e.POST("/user", users.CreateUserHandler(users.CreateUser(db)))
 	e.PATCH("edit/:ID", users.UpdateUserByIdParamHandler(users.UpdateUserByIdParam(db)))
 	e.PUT("editfield/:ID", users.UpdateUserByIdFieldHandler(users.UpdateUserByIdField(db)))
+	e.DELETE("/delete/:ID", users.DeleteUserByIdHandler(users.DeleteUserById(db)))
 	e.Logger.Fatal(e.Start(":8000"))
 
 	quit := make(chan os.Signal, 1)
