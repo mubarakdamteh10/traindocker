@@ -36,3 +36,5 @@ func GetUserById(db *mongo.Database) func(context.Context, string) (*Users, erro
 		return &users, nil
 	}
 }
+
+
