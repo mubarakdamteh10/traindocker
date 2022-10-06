@@ -16,7 +16,7 @@ import (
 
 func main() {
 	// create method
-	clientOptions := options.Client().ApplyURI("mongodb+srv://mubarakdamteh10:Mubarak12345@cluster0.yainj.mongodb.net/?retryWrites=true&w=majority&ssl=true")
+	clientOptions := options.Client().ApplyURI("mongodb+srv://mubarakdamteh10:Mubarak12345@cluster0.yainj.mongodb.net/?retryWrites=true&w=majority")
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
 		log.Fatal(err)
