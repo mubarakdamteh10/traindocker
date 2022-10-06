@@ -9,15 +9,14 @@ import (
 	"time"
 
 	"github.com/labstack/echo/v4"
-	"github.com/mubarakdamteh10/traindocker/users"
+	"github.com/mubarakdamteh10/tutorial-101/users"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 func main() {
 	// create method
-	mongoURI := "mongodb+srv://mubarakdamteh10:Mubarak12345@cluster0.yainj.mongodb.net/?retryWrites=true&w=majority"
-	clientOptions := options.Client().ApplyURI(mongoURI)
+	clientOptions := options.Client().ApplyURI("mongodb+srv://mubarakdamteh10:Mubarak12345@cluster0.yainj.mongodb.net/?retryWrites=true&w=majority")
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
 		log.Fatal(err)
