@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/labstack/echo/v4"
+	"github.com/mubarakdamteh10/traindocker/customer_order"
 	"github.com/mubarakdamteh10/traindocker/users"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -40,6 +41,9 @@ func main() {
 	e.PATCH("edit/:ID", users.UpdateUserByIdParamHandler(users.UpdateUserByIdParam(db)))
 	e.PUT("editfield/:ID", users.UpdateUserByIdFieldHandler(users.UpdateUserByIdField(db)))
 	e.DELETE("/delete/:ID", users.DeleteUserByIdHandler(users.DeleteUserById(db)))
+
+	// order method
+	e.GET("/getorder", customer_order.GetAllOrderHandler(customer_order.GetAllOrder(db)))
 	e.Logger.Fatal(e.Start(":8000"))
 
 	quit := make(chan os.Signal, 1)
