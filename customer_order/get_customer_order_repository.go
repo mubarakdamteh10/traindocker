@@ -23,3 +23,16 @@ func GetAllOrder(db *mongo.Database) func(context.Context) ([]*Order, error) {
 		return orders, nil
 	}
 }
+
+func GetOrderById(db *mongo.Database) func(context.Context, string) (*Order, error) {
+	return func(ctx context.Context, str string) (*Order, error) {
+		collection := getCustomerCollection(db)
+		filter := bson.M{"Name": str}
+		var order Order
+		if err := collection.FindOne(ctx, filter).Decode(&order); err != nil {
+			return nil, err
+		}
+		fmt.Println(order)
+		return &order, nil
+	}
+}
