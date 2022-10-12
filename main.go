@@ -46,6 +46,8 @@ func main() {
 	e.POST("/createorder", customer_order.CreateOrderHandler(customer_order.CreateCustomerOrder(db)))
 	e.GET("/getorder", customer_order.GetAllOrderHandler(customer_order.GetAllOrder(db)))
 	e.GET("order/:name", customer_order.GetOrderByIdHandler(customer_order.GetOrderById(db)))
+	e.PATCH("editOrder/:ID", customer_order.UpdateOrderByparamHandler(customer_order.UpdateOrderByParam(db)))
+	e.PUT("editOrderField/:ID", customer_order.UpdateOrderByFieldHandler(customer_order.UpdateOrderByField(db)))
 	e.Logger.Fatal(e.Start(":8000"))
 
 	quit := make(chan os.Signal, 1)

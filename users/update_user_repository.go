@@ -28,10 +28,10 @@ func UpdateUserByIdField(db *mongo.Database) func(context.Context, Users) error 
 	return func(ctx context.Context, user Users) error {
 		collection := getUserCollection(db)
 		filter := bson.M{"_id": user.ID}
-		res, err := collection.UpdateOne(ctx, filter, bson.M{"$set": user.ID})
+		res, err := collection.UpdateOne(ctx, filter, bson.M{"$set": user})
 
 		if res.ModifiedCount == 0 {
-			return errors.New("users caon not update")
+			return errors.New("users can not update")
 		}
 		return err
 	}
