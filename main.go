@@ -48,6 +48,7 @@ func main() {
 	e.GET("order/:name", customer_order.GetOrderByIdHandler(customer_order.GetOrderById(db)))
 	e.PATCH("editOrder/:ID", customer_order.UpdateOrderByparamHandler(customer_order.UpdateOrderByParam(db)))
 	e.PUT("editOrderField/:ID", customer_order.UpdateOrderByFieldHandler(customer_order.UpdateOrderByField(db)))
+	e.DELETE("deleteOrder/:ID", customer_order.DeleteOrderByIdHandler(customer_order.DeleteOrderById(db)))
 	e.Logger.Fatal(e.Start(":8000"))
 
 	quit := make(chan os.Signal, 1)
