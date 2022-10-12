@@ -43,6 +43,7 @@ func main() {
 	e.DELETE("/delete/:ID", users.DeleteUserByIdHandler(users.DeleteUserById(db)))
 
 	// order method
+	e.POST("/createorder", customer_order.CreateOrderHandler(customer_order.CreateCustomerOrder(db)))
 	e.GET("/getorder", customer_order.GetAllOrderHandler(customer_order.GetAllOrder(db)))
 	e.Logger.Fatal(e.Start(":8000"))
 
